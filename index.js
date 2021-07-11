@@ -2,6 +2,7 @@ function handleClick()
 {
     var buttonPressed = this.innerHTML;
     makeSound(buttonPressed);
+    addButtonAnimation(buttonPressed);
 }
 
 
@@ -14,6 +15,7 @@ for (var i=0; i<len; i++){
 document.addEventListener("keypress",function(event){
     var keyPressed = event.key;
     makeSound(keyPressed);
+    addButtonAnimation(keyPressed);
 });
 
 
@@ -49,4 +51,13 @@ function makeSound(buttonPressed){
             audio.play();
             break;
     }
+}
+
+
+function addButtonAnimation(buttonPressed){
+    var activeButton = document.querySelector("."+buttonPressed);
+    console.log(activeButton.classList.add("pressed"));
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    },140)
 }
